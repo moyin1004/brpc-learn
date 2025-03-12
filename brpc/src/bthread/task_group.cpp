@@ -446,6 +446,7 @@ int TaskGroup::start_background(bthread_t* __restrict th,
                                 const bthread_attr_t* __restrict attr,
                                 void * (*fn)(void*),
                                 void* __restrict arg) {
+    // 流水线预测
     if (__builtin_expect(!fn, 0)) {
         return EINVAL;
     }

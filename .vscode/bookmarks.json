@@ -1,0 +1,69 @@
+{
+	"files": [
+		{
+			"path": "brpc/src/brpc/acceptor.cpp",
+			"bookmarks": [
+				{
+					"line": 249,
+					"column": 63,
+					"label": "处理新的tcp连接"
+				}
+			]
+		},
+		{
+			"path": "brpc/src/brpc/event_dispatcher_epoll.cpp",
+			"bookmarks": [
+				{
+					"line": 83,
+					"column": 80,
+					"label": "epoll bthread"
+				}
+			]
+		},
+		{
+			"path": "brpc/src/bthread/task_control.cpp",
+			"bookmarks": [
+				{
+					"line": 73,
+					"column": 45,
+					"label": "真正的操作系统线程"
+				},
+				{
+					"line": 123,
+					"column": 59,
+					"label": "task_group创建"
+				}
+			]
+		},
+		{
+			"path": "brpc/src/bthread/task_group.cpp",
+			"bookmarks": [
+				{
+					"line": 444,
+					"column": 57,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "brpc/src/brpc/input_messenger.cpp",
+			"bookmarks": [
+				{
+					"line": 341,
+					"column": 47,
+					"label": "处理客户端tcp流"
+				}
+			]
+		},
+		{
+			"path": "build/brpc/output/include/bthread/context.h",
+			"bookmarks": [
+				{
+					"line": 83,
+					"column": 71,
+					"label": "用当前bthread填充到寄存器 恢复运行"
+				}
+			]
+		}
+	]
+}

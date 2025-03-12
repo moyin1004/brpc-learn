@@ -4,6 +4,7 @@
 #include <gflags/gflags.h>
 #include <iostream>
 #include <json2pb/pb_to_json.h>
+#include <butil/logging.h>
 
 using namespace std;
 using namespace example;
@@ -54,6 +55,9 @@ class HttpServiceImpl : public HttpService {
 
 int main() {
     printf("Hello World\n");
+    // 打印分层日志
+    logging::FLAGS_v = 200;
+
     // bvar::Adder<T>用于累加，下面定义了一个统计read error总数的Adder。
     bvar::Adder<int> g_read_error;
     // 把bvar::Window套在其他bvar上就可以获得时间窗口内的值。
@@ -98,5 +102,6 @@ int main() {
     }
     // Wait until Ctrl-C is pressed, then Stop() and Join() the server.
     server.RunUntilAskedToQuit();
+    sleep(10);
     return 0;
 }
