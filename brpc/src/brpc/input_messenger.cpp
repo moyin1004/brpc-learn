@@ -290,7 +290,8 @@ int InputMessenger::ProcessNewMessage(
         }
         pr.message()->_received_us = received_us;
         pr.message()->_base_real_us = base_realtime;
-                    
+        LOG(INFO) << "protocol index:" << index << ", " << _handlers[index].name;
+
         // This unique_ptr prevents msg to be lost before transfering
         // ownership to last_msg
         DestroyingPtr<InputMessageBase> msg(pr.message());

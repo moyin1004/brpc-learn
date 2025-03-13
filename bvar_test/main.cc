@@ -31,6 +31,7 @@ class HttpServiceImpl : public HttpService {
         // Fill response.
         cntl->http_response().set_content_type("text/plain");
         butil::IOBufBuilder os;
+        os << cntl->http_request().major_version() << endl;
         os << "queries:";
         cntl->http_request().method();
         for (brpc::URI::QueryIterator it = cntl->http_request().uri().QueryBegin();
@@ -102,6 +103,6 @@ int main() {
     }
     // Wait until Ctrl-C is pressed, then Stop() and Join() the server.
     server.RunUntilAskedToQuit();
-    sleep(10);
+    // sleep(10);
     return 0;
 }

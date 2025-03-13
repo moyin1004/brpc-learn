@@ -49,7 +49,12 @@
 			"path": "brpc/src/brpc/input_messenger.cpp",
 			"bookmarks": [
 				{
-					"line": 341,
+					"line": 181,
+					"column": 43,
+					"label": "客户端请求执行入口"
+				},
+				{
+					"line": 342,
 					"column": 47,
 					"label": "处理客户端tcp流"
 				}
@@ -62,6 +67,36 @@
 					"line": 83,
 					"column": 71,
 					"label": "用当前bthread填充到寄存器 恢复运行"
+				}
+			]
+		},
+		{
+			"path": "brpc/src/brpc/socket.cpp",
+			"bookmarks": [
+				{
+					"line": 713,
+					"column": 53,
+					"label": "socket创建"
+				}
+			]
+		},
+		{
+			"path": "brpc/src/brpc/global.cpp",
+			"bookmarks": [
+				{
+					"line": 437,
+					"column": 47,
+					"label": "http2协议处理"
+				}
+			]
+		},
+		{
+			"path": "brpc/src/brpc/protocol.cpp",
+			"bookmarks": [
+				{
+					"line": 76,
+					"column": 67,
+					"label": "协议分发处理注册函数"
 				}
 			]
 		}
