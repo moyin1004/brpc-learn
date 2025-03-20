@@ -96,6 +96,7 @@ inline TaskControl* get_or_new_task_control() {
     int concurrency = FLAGS_bthread_min_concurrency > 0 ?
         FLAGS_bthread_min_concurrency :
         FLAGS_bthread_concurrency;
+    CHECK(concurrency >= FLAGS_task_group_ntags);
     if (c->init(concurrency) != 0) {
         LOG(ERROR) << "Fail to init g_task_control";
         delete c;

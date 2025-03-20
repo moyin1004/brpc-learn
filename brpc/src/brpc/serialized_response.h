@@ -44,6 +44,7 @@ public:
     // implements Message ----------------------------------------------
     void Clear() override;
     size_t ByteSizeLong() const override;
+    // https://github.com/protocolbuffers/protobuf/blob/v3.4.0/CHANGES.txt#L58-L59 deprecated
     int GetCachedSize() const PB_425_OVERRIDE { return ByteSize(); }
     butil::IOBuf& serialized_data() { return _serialized; }
     const butil::IOBuf& serialized_data() const { return _serialized; }

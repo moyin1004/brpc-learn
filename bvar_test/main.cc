@@ -1,17 +1,17 @@
 #include "proto/http.pb.h"
 #include <brpc/server.h>
+#include <butil/logging.h>
 #include <bvar/bvar.h>
 #include <gflags/gflags.h>
 #include <iostream>
 #include <json2pb/pb_to_json.h>
-#include <butil/logging.h>
 
 using namespace std;
 using namespace example;
 
 DEFINE_int32(port, 8010, "TCP Port of this server");
 
-class HttpServiceImpl : public HttpService {
+class HttpServiceImpl : public example::HttpService {
   public:
     HttpServiceImpl() {}
     virtual ~HttpServiceImpl() {}
@@ -51,6 +51,13 @@ class HttpServiceImpl : public HttpService {
         json2pb::ProtoMessageToJson(*req, &req_str, NULL);
         json2pb::ProtoMessageToJson(*res, &res_str, NULL);
         cout << "req:" << req_str << " res:" << res_str << endl;
+    }
+
+    void TestGrpc(google::protobuf::RpcController *cntl_base, const ::example::TestGrpcReq *request,
+                  ::example::TestGrpcRsp *response, ::google::protobuf::Closure *done) override {
+        brpc::ClosureGuard done_guard(done);
+        response->set_code(29);
+        response->set_data(request->data());
     }
 };
 
@@ -97,6 +104,7 @@ int main() {
         return -1;
     }
     brpc::ServerOptions options;
+    options.enabled_protocols = "h2";
     if (server.Start(FLAGS_port, &options) != 0) {
         LOG(ERROR) << "Fail to start HttpServer";
         return -1;

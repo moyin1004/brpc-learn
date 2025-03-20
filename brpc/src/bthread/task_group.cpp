@@ -152,16 +152,19 @@ void TaskGroup::run_main_task() {
     bvar::PassiveStatus<double> cumulated_cputime(
         get_cumulated_cputime_from_this, this);
     std::unique_ptr<bvar::PerSecond<bvar::PassiveStatus<double> > > usage_bvar;
+    LOG(INFO) << "TaskGroup::run_main_task:" << this->_tid;
 
     TaskGroup* dummy = this;
     bthread_t tid;
     while (wait_task(&tid)) {
+        LOG(INFO) << "cur_id:" << _cur_meta->tid << " switch to bthread:" << tid << " main_id:" << _main_tid;
         TaskGroup::sched_to(&dummy, tid);
         DCHECK_EQ(this, dummy);
         DCHECK_EQ(_cur_meta->stack, _main_stack);
         if (_cur_meta->tid != _main_tid) {
             TaskGroup::task_runner(1/*skip remained*/);
         }
+        LOG(INFO) << "cur_id:" << _cur_meta->tid << " targetid:" << tid << " main_id:" << _main_tid;
         if (FLAGS_show_per_worker_usage_in_vars && !usage_bvar) {
             char name[32];
 #if defined(OS_MACOSX)
@@ -264,6 +267,7 @@ void TaskGroup::task_runner(intptr_t skip_remained) {
 #endif // BRPC_BTHREAD_TRACER
 
     if (!skip_remained) {
+        // 切换bthread之后，把之前未执行完的bthead放入执行队列
         while (g->_last_context_remained) {
             RemainedFn fn = g->_last_context_remained;
             g->_last_context_remained = NULL;
@@ -715,6 +719,7 @@ void TaskGroup::ready_to_run(TaskMeta* meta, bool nosignal) {
 #ifdef BRPC_BTHREAD_TRACER
     _control->_task_tracer.set_status(TASK_STATUS_READY, meta);
 #endif // BRPC_BTHREAD_TRACER
+    LOG(INFO) << "ready_to_run pthreadid:" << meta->tid;
     push_rq(meta->tid);
     if (nosignal) {
         ++_num_nosignal;

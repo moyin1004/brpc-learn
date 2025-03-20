@@ -6,7 +6,19 @@ option cc_generic_services = true;
 message HttpRequest {};
 message HttpResponse {};
 
+message TestGrpcReq {
+  int64 id = 1;
+  string data = 2;
+};
+
+message TestGrpcRsp {
+  int32 code = 1;
+  string data = 2;
+};
+
 service HttpService {
+  // 请求和返回为空 自动变为http/h2服务
   rpc Echo(HttpRequest) returns (HttpResponse);
   rpc EchoProtobuf(HttpRequest) returns (HttpResponse);
+  rpc TestGrpc(TestGrpcReq) returns (TestGrpcRsp);
 };

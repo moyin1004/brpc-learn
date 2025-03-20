@@ -2268,6 +2268,7 @@ int Socket::OnInputEvent(void* user_data, uint32_t events,
         // transfer ownership as well, don't use s anymore!
         Socket* const p = s.release();
 
+        LOG(INFO) << "OnInputEvent ProcessEvent start";
         bthread_attr_t attr = thread_attr;
         attr.keytable_pool = p->_keytable_pool;
         attr.tag = bthread_self_tag();
@@ -2277,6 +2278,7 @@ int Socket::OnInputEvent(void* user_data, uint32_t events,
             LOG(FATAL) << "Fail to start ProcessEvent";
             ProcessEvent(p);
         }
+        LOG(INFO) << "OnInputEvent ProcessEvent end";
     }
     return 0;
 }

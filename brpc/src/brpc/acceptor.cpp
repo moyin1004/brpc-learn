@@ -294,10 +294,12 @@ void Acceptor::OnNewConnectionsUntilEAGAIN(Socket* acception) {
         }
         options.use_rdma = am->_use_rdma;
         options.bthread_tag = am->_bthread_tag;
+        LOG(INFO) << "OnNewConnectionsUntilEAGAIN socket create start";
         if (Socket::Create(options, &socket_id) != 0) {
             LOG(ERROR) << "Fail to create Socket";
             continue;
         }
+        LOG(INFO) << "OnNewConnectionsUntilEAGAIN socket create end";
         in_fd.release(); // transfer ownership to socket_id
 
         // There's a funny race condition here. After Socket::Create, messages

@@ -93,6 +93,7 @@ ParseResult InputMessenger::CutInputMessage(
         do {
             ParseResult result =
                 _handlers[cur_index].parse(&m->_read_buf, m, read_eof, _handlers[cur_index].arg);
+            // LOG(INFO) << result.error() << " " << cur_index;
             if (result.is_ok() ||
                 result.error() == PARSE_ERROR_NOT_ENOUGH_DATA) {
                 m->set_preferred_index(cur_index);

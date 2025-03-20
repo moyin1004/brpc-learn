@@ -191,6 +191,7 @@ void* EventDispatcher::RunThis(void* arg) {
 }
 
 void EventDispatcher::Run() {
+    LOG(INFO) << "epoll bthread id:" << _tid;
     while (!_stop) {
         epoll_event e[32];
 #ifdef BRPC_ADDITIONAL_EPOLL
@@ -201,6 +202,7 @@ void EventDispatcher::Run() {
         }
 #else
         const int n = epoll_wait(_event_dispatcher_fd, e, ARRAY_SIZE(e), -1);
+        LOG(INFO) << "epoll_wait:" << n;
 #endif
         if (_stop) {
             // epoll_ctl/epoll_wait should have some sort of memory fencing

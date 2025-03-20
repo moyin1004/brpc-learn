@@ -1347,7 +1347,6 @@ void ProcessHttpRequest(InputMessageBase *msg) {
     }
     HttpResponseSender resp_sender(cntl);
     resp_sender.set_received_us(msg->received_us());
-    LOG(INFO) << imsg_guard->header().major_version();
 
     const bool is_http2 = imsg_guard->header().is_http2();
     if (is_http2) {

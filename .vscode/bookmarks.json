@@ -39,7 +39,12 @@
 			"path": "brpc/src/bthread/task_group.cpp",
 			"bookmarks": [
 				{
-					"line": 444,
+					"line": 260,
+					"column": 53,
+					"label": "bthread运行函数"
+				},
+				{
+					"line": 448,
 					"column": 57,
 					"label": ""
 				}
@@ -49,12 +54,12 @@
 			"path": "brpc/src/brpc/input_messenger.cpp",
 			"bookmarks": [
 				{
-					"line": 181,
+					"line": 182,
 					"column": 43,
 					"label": "客户端请求执行入口"
 				},
 				{
-					"line": 342,
+					"line": 343,
 					"column": 47,
 					"label": "处理客户端tcp流"
 				}
@@ -77,6 +82,11 @@
 					"line": 713,
 					"column": 53,
 					"label": "socket创建"
+				},
+				{
+					"line": 2233,
+					"column": 58,
+					"label": ""
 				}
 			]
 		},
@@ -97,6 +107,36 @@
 					"line": 76,
 					"column": 67,
 					"label": "协议分发处理注册函数"
+				}
+			]
+		},
+		{
+			"path": "brpc/src/bthread/bthread.cpp",
+			"bookmarks": [
+				{
+					"line": 80,
+					"column": 47,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "brpc/src/brpc/event_dispatcher.cpp",
+			"bookmarks": [
+				{
+					"line": 64,
+					"column": 70,
+					"label": "获取全局epoll"
+				}
+			]
+		},
+		{
+			"path": "brpc/src/brpc/serialized_response.h",
+			"bookmarks": [
+				{
+					"line": 47,
+					"column": 68,
+					"label": ""
 				}
 			]
 		}

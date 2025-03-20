@@ -620,8 +620,8 @@ Acceptor* Server::BuildAcceptor() {
             continue;
         }
         if (has_whitelist &&
-            !is_http_protocol(protocols[i].name) &&
-            !whitelist.erase(protocols[i].name)) {
+            !whitelist.erase(protocols[i].name) &&
+            !is_http_protocol(protocols[i].name)) {
             // the protocol is not allowed to serve.
             RPC_VLOG << "Skip protocol=" << protocols[i].name;
             continue;
