@@ -66,16 +66,6 @@
 			]
 		},
 		{
-			"path": "build/brpc/output/include/bthread/context.h",
-			"bookmarks": [
-				{
-					"line": 83,
-					"column": 71,
-					"label": "用当前bthread填充到寄存器 恢复运行"
-				}
-			]
-		},
-		{
 			"path": "brpc/src/brpc/socket.cpp",
 			"bookmarks": [
 				{
@@ -137,6 +127,31 @@
 					"line": 47,
 					"column": 68,
 					"label": ""
+				}
+			]
+		},
+		{
+			"path": "brpc/src/butil/resource_pool_inl.h",
+			"bookmarks": [
+				{
+					"line": 102,
+					"column": 46,
+					"label": "内存池"
+				},
+				{
+					"line": 116,
+					"column": 44,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "brpc/src/bthread/context.h",
+			"bookmarks": [
+				{
+					"line": 83,
+					"column": 71,
+					"label": "用当前bthread填充到寄存器 恢复运行"
 				}
 			]
 		}

@@ -28,10 +28,13 @@ add_executable(bvar_test
     bvar_test/main.cc
     $<TARGET_OBJECTS:TEST_PROTO_LIB>
 )
-add_dependencies(bvar_test brpc-static)
 
 add_executable(bthread_learn 
     bthread_learn/main.cc
+)
+
+add_executable(mem_learn 
+    mempool/main.cc
 )
 
 macro(brpc_dependencies exec_name)
@@ -58,3 +61,4 @@ endmacro(brpc_dependencies)
 
 brpc_dependencies(bvar_test)
 brpc_dependencies(bthread_learn)
+brpc_dependencies(mem_learn)
